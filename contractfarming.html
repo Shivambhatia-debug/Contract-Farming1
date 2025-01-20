@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Contract Farming</title>
+  <link rel="stylesheet" href="contractfarming.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav>
+      <div class="logo">Contract Farming</div>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#login">Login</a></li>
+        <li><a href="#contracts">Contracts</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Home Section -->
+  <section id="home">
+    <div class="welcome-text">
+      <h1>Welcome to Contract Farming Platform</h1>
+      <p>Connecting farmers and buyers for seamless contract farming transactions.</p>
+    </div>
+  </section>
+
+  <!-- Login Form -->
+  <section id="login">
+    <div class="login-container">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Contracts Section -->
+  <section id="contracts">
+    <h2>Available Contracts</h2>
+    <div class="contract-list">
+      <div class="contract-item">
+        <h3>Wheat Contract</h3>
+        <p>Farmer: John Doe</p>
+        <p>Quantity: 5000 kg</p>
+        <p>Price: $2000</p>
+        <button class="apply-btn">Apply</button>
+      </div>
+      
+      <div class="contract-item">
+        <h3>Rice Contract</h3>
+        <p>Farmer: Sarah Smith</p>
+        <p>Quantity: 8000 kg</p>
+        <p>Price: $3200</p>
+        <button class="apply-btn">Apply</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <form id="contactForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required></textarea>
+      
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

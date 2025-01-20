@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contractor Dashboard</title>
+    <link rel="stylesheet" href="contractor.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        
+        <h1>Contractor Dashboard</h1>
+        <nav >
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Farmers</a></li>
+                <li><a href="#">Contracts</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </nav>
+        <div class="theme-toggle"></div>
+            <button id="darkModeToggle">Toggle Dark Mode</button>
+        </div>
+    </header>
+    
+    <main>
+        <section class="crop-filter">
+            <h2>Search for Crops</h2>
+            <input type="text" id="crop-search" placeholder="Search by crop name (e.g., Wheat, Rice)" onkeyup="filterCrops()">
+        </section>
+
+        <section class="farmers-list">
+            <h2>Farmers Available for Contract</h2>
+
+            <!-- Farmer Card -->
+            <div class="farmer" id="farmer1">
+                <div class="farmer-card">
+                    <div class="farmer-details">
+                        <h3>Farmer Name: John Doe</h3>
+                        <p><strong>Location:</strong> Maharashtra</p>
+                        <p><strong>Crops Available:</strong> Wheat, Rice</p>
+                        <p><strong>Price (per ton):</strong> ₹2000</p>
+                        <div class="farmer-actions">
+                            <button class="call-btn" onclick="startVideoCall('John Doe')">Video Call</button>
+                            <button class="call-btn" onclick="startAudioCall('John Doe')">Audio Call</button>
+                            <button class="chat-btn" onclick="openChat('John Doe')">Chat</button>
+                        </div>
+                    </div>
+                    <button class="expand-btn" onclick="toggleDetails('farmer1')"><i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="farmer-extra" id="farmer1-extra">
+                    <p><strong>Contact:</strong> +91-9876543210</p>
+                    <p><strong>Experience:</strong> 10 years</p>
+                    <p><strong>Available Quantity:</strong> 50 tons</p>
+                    <p><strong>Field Location:</strong> <a href="#" onclick="openMap()">View on Map</a></p>
+                    <p><strong>Crop Monitoring:</strong> <a href="#" onclick="showCropMonitoring()">View Data</a></p>
+                   
+                    <p><strong>Market Price Trends:</strong> <a href="#" onclick="viewPriceTrends('Wheat')">View Trends</a></p>
+<div id="price-trend-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('price-trend-modal')">&times;</span>
+        <canvas id="price-trend-chart"></canvas>
+        <p><strong>Weather Impact:</strong> <a href="#" onclick="viewWeatherImpact('Wheat')">Check Impact</a></p>
+        
+        <p><strong>Soil Condition:</strong> <a href="#" onclick="viewSoilConditions('John Doe')">View Soil Data</a></p>
+        <button class="ar-inspection-btn" onclick="startARInspection()">Start AR Crop Inspection</button>
+
+        <button class="negotiation-btn" onclick="openChatbot()">Start Automated Negotiation</button>
+        <button class="contract-btn" onclick="startContractProcess('John Doe')">Create Contract</button>
+
+        <button class="contract-btn" onclick="generateSmartContract('John Doe')">Create Smart Contract</button>
+
+    </div>
+</div>
+
+               
+                <!-- Other sections remain unchanged -->
+
+            </div>
+            
+            <div class="farmer-extra" id="farmer1-extra">
+                <p><strong>Contact:</strong> +91-9876543210</p>
+                <p><strong>Experience:</strong> 10 years</p>
+                <p><strong>Available Quantity:</strong> 50 tons</p>
+                <p><strong>Field Location:</strong> <a href="#" onclick="openMap()">View on Map</a></p>
+                <p><strong>Field Condition:</strong> <a href="#" onclick="showFieldCondition('John Doe')">View Field Condition</a></p>
+                <p><strong>Market Price:</strong> ₹2200 per ton</p>
+                <p><strong>Weather Forecast:</strong> <span id="weather-forecast1">Fetching...</span></p>
+                <p><strong>Crop Monitoring:</strong> <a href="#" onclick="showCropMonitoring()">View Data</a></p>
+                <button class="contract-btn" onclick="startContractProcess('John Doe')">Create Contract</button>
+                <button class="schedule-btn" onclick="scheduleVisit('John Doe')">Schedule Field Visit</button>
+                <button class="negotiation-btn" onclick="startNegotiation('John Doe')">Start Negotiation</button>
+            
+            </div>
+            </div>
+
+            <!-- Another Farmer Card -->
+            <div class="farmer" id="farmer2">
+                <div class="farmer-card">
+                    <div class="farmer-details">
+                        <h3>Farmer Name: kishorilal</h3>
+                        <p><strong>Location:</strong> Bihar</p>
+                        <p><strong>Crops Available:</strong> maize</p>
+                        <p><strong>Price (per ton):</strong> ₹6700</p>
+                        <div class="farmer-actions">
+                            <button class="call-btn" onclick="startVideoCall('kishorilal')">Video Call</button>
+                            <button class="call-btn" onclick="startAudioCall('kishorilal')">Audio Call</button>
+                            <button class="chat-btn" onclick="openChat('kishorilal')">Chat</button>
+                        </div>
+                    </div>
+                    <button class="expand-btn" onclick="toggleDetails('farmer2')"><i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="farmer-extra" id="farmer2-extra">
+                    <p><strong>Contact:</strong> +91-98590210</p>
+                    <p><strong>Experience:</strong> 6 years</p>
+                    <p><strong>Available Quantity:</strong> 30 tons</p>
+                    <p><strong>Field Location:</strong> <a href="#" onclick="openMap()">View on Map</a></p>
+                    <p><strong>Crop Monitoring:</strong> <a href="#" onclick="showCropMonitoring()">View Data</a></p>
+                   
+                    <p><strong>Market Price Trends:</strong> <a href="#" onclick="viewPriceTrends('maize')">View Trends</a></p>
+<div id="price-trend-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('price-trend-modal')">&times;</span>
+        <canvas id="price-trend-chart"></canvas>
+        <p><strong>Weather Impact:</strong> <a href="#" onclick="viewWeatherImpact('maize')">Check Impact</a></p>
+        
+        <p><strong>Soil Condition:</strong> <a href="#" onclick="viewSoilConditions('Kishorilal')">View Soil Data</a></p>
+        <button class="ar-inspection-btn" onclick="startARInspection()">Start AR Crop Inspection</button>
+
+        <button class="negotiation-btn" onclick="openChatbot()">Start Automated Negotiation</button>
+        <button class="contract-btn" onclick="startContractProcess('Kishorilal')">Create Contract</button>
+
+        <button class="contract-btn" onclick="generateSmartContract('Kishorilal')">Create Smart Contract</button>
+
+    </div>
+</div>
+
+               
+                <!-- Other sections remain unchanged -->
+
+            </div>
+            
+            <div class="farmer-extra" id="farmer1-extra">
+                <p><strong>Contact:</strong> +91-9876543210</p>
+                <p><strong>Experience:</strong> 6 years</p>
+                <p><strong>Available Quantity:</strong> 30 tons</p>
+                <p><strong>Field Location:</strong> <a href="#" onclick="openMap()">View on Map</a></p>
+                <p><strong>Field Condition:</strong> <a href="#" onclick="showFieldCondition('kishorilal')">View Field Condition</a></p>
+                <p><strong>Market Price:</strong> ₹6700 per ton</p>
+                <p><strong>Weather Forecast:</strong> <span id="weather-forecast1">Fetching...</span></p>
+                <p><strong>Crop Monitoring:</strong> <a href="#" onclick="showCropMonitoring()">View Data</a></p>
+                <button class="contract-btn" onclick="startContractProcess('kishorilal')">Create Contract</button>
+                <button class="schedule-btn" onclick="scheduleVisit('kishorilal')">Schedule Field Visit</button>
+                <button class="negotiation-btn" onclick="startNegotiation('kishorilal')">Start Negotiation</button>
+            
+            </div>
+            </div>
+            <div class="farmer" id="farmer1">
+                <div class="farmer-card">
+                    <div class="farmer-details">
+                        <h3>Farmer Name: John Doe</h3>
+                        <p><strong>Location:</strong> Maharashtra</p>
+                        <p><strong>Crops Available:</strong> Wheat, Rice</p>
+                        <p><strong>Price (per ton):</strong> ₹2000</p>
+                        <div class="farmer-actions">
+                            <button class="call-btn" onclick="startVideoCall('John Doe')">Video Call</button>
+                            <button class="call-btn" onclick="startAudioCall('John Doe')">Audio Call</button>
+                            <button class="chat-btn" onclick="openChat('John Doe')">Chat</button>
+                        </div>
+                    </div>
+                    <button class="expand-btn" onclick="toggleDetails('farmer1')"><i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="farmer-extra" id="farmer1-extra">
+                    <p><strong>Contact:</strong> +91-9876543210</p>
+                    <p><strong>Experience:</strong> 10 years</p>
+                    <p><strong>Available Quantity:</strong> 50 tons</p>
+                    <p><strong>Field Location:</strong> <a href="#" onclick="openMap()">View on Map</a></p>
+                    <p><strong>Crop Monitoring:</strong> <a href="#" onclick="showCropMonitoring()">View Data</a></p>
+                   
+                    <p><strong>Market Price Trends:</strong> <a href="#" onclick="viewPriceTrends('Wheat')">View Trends</a></p>
+<div id="price-trend-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('price-trend-modal')">&times;</span>
+        <canvas id="price-trend-chart"></canvas>
+        <p><strong>Weather Impact:</strong> <a href="#" onclick="viewWeatherImpact('Wheat')">Check Impact</a></p>
+        
+        <p><strong>Soil Condition:</strong> <a href="#" onclick="viewSoilConditions('John Doe')">View Soil Data</a></p>
+        <button class="ar-inspection-btn" onclick="startARInspection()">Start AR Crop Inspection</button>
+
+        <button class="negotiation-btn" onclick="openChatbot()">Start Automated Negotiation</button>
+        <button class="contract-btn" onclick="startContractProcess('John Doe')">Create Contract</button>
+
+        <button class="contract-btn" onclick="generateSmartContract('John Doe')">Create Smart Contract</button>
+
+    </div>
+</div>
+  <!-- Other sections remain unchanged -->
+
+</div>
+            
+<div class="farmer-extra" id="farmer1-extra">
+    <p><strong>Contact:</strong> +91-9876543210</p>
+    <p><strong>Experience:</strong> 10 years</p>
+    <p><strong>Available Quantity:</strong> 50 tons</p>
+    <p><strong>Field Location:</strong> <a href="#" onclick="openMap()">View on Map</a></p>
+    <p><strong>Field Condition:</strong> <a href="#" onclick="showFieldCondition('John Doe')">View Field Condition</a></p>
+    <p><strong>Market Price:</strong> ₹2200 per ton</p>
+    <p><strong>Weather Forecast:</strong> <span id="weather-forecast1">Fetching...</span></p>
+    <p><strong>Crop Monitoring:</strong> <a href="#" onclick="showCropMonitoring()">View Data</a></p>
+    <button class="contract-btn" onclick="startContractProcess('John Doe')">Create Contract</button>
+    <button class="schedule-btn" onclick="scheduleVisit('John Doe')">Schedule Field Visit</button>
+    <button class="negotiation-btn" onclick="startNegotiation('John Doe')">Start Negotiation</button>
+
+</div>
+</div>
+<div class="farmer" id="farmer1">
+    <div class="farmer-card">
+        <div class="farmer-details">
+            <h3>Farmer Name: John Doe</h3>
+            <p><strong>Location:</strong> Maharashtra</p>
+            <p><strong>Crops Available:</strong> Wheat, Rice</p>
+            <p><strong>Price (per ton):</strong> ₹2000</p>
+            <div class="farmer-actions">
+                <button class="call-btn" onclick="startVideoCall('John Doe')">Video Call</button>
+                <button class="call-btn" onclick="startAudioCall('John Doe')">Audio Call</button>
+                <button class="chat-btn" onclick="openChat('John Doe')">Chat</button>
+            </div>
+        </div>
+        <button class="expand-btn" onclick="toggleDetails('farmer1')"><i class="fas fa-chevron-down"></i></button>
+    </div>
+    <div class="farmer-extra" id="farmer1-extra">
+        <p><strong>Contact:</strong> +91-9876543210</p>
+        <p><strong>Experience:</strong> 10 years</p>
+        <p><strong>Available Quantity:</strong> 50 tons</p>
+        <p><strong>Field Location:</strong> <a href="#" onclick="openMap()">View on Map</a></p>
+        <p><strong>Crop Monitoring:</strong> <a href="#" onclick="showCropMonitoring()">View Data</a></p>
+       
+        <p><strong>Market Price Trends:</strong> <a href="#" onclick="viewPriceTrends('Wheat')">View Trends</a></p>
+<div id="price-trend-modal" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal('price-trend-modal')">&times;</span>
+<canvas id="price-trend-chart"></canvas>
+<p><strong>Weather Impact:</strong> <a href="#" onclick="viewWeatherImpact('Wheat')">Check Impact</a></p>
+
+<p><strong>Soil Condition:</strong> <a href="#" onclick="viewSoilConditions('John Doe')">View Soil Data</a></p>
+<button class="ar-inspection-btn" onclick="startARInspection()">Start AR Crop Inspection</button>
+
+<button class="negotiation-btn" onclick="openChatbot()">Start Automated Negotiation</button>
+<button class="contract-btn" onclick="startContractProcess('John Doe')">Create Contract</button>
+
+<button class="contract-btn" onclick="generateSmartContract('John Doe')">Create Smart Contract</button>
+
+</div>
+</div>
+
+   
+    <!-- Other sections remain unchanged -->
+
+</div>
+
+<div class="farmer-extra" id="farmer1-extra">
+    <p><strong>Contact:</strong> +91-9876543210</p>
+    <p><strong>Experience:</strong> 10 years</p>
+    <p><strong>Available Quantity:</strong> 50 tons</p>
+    <p><strong>Field Location:</strong> <a href="#" onclick="openMap()">View on Map</a></p>
+    <p><strong>Field Condition:</strong> <a href="#" onclick="showFieldCondition('John Doe')">View Field Condition</a></p>
+    <p><strong>Market Price:</strong> ₹2200 per ton</p>
+    <p><strong>Weather Forecast:</strong> <span id="weather-forecast1">Fetching...</span></p>
+    <p><strong>Crop Monitoring:</strong> <a href="#" onclick="showCropMonitoring()">View Data</a></p>
+    <button class="contract-btn" onclick="startContractProcess('John Doe')">Create Contract</button>
+    <button class="schedule-btn" onclick="scheduleVisit('John Doe')">Schedule Field Visit</button>
+    <button class="negotiation-btn" onclick="startNegotiation('John Doe')">Start Negotiation</button>
+
+</div>
+</div>
+<div class="farmer" id="farmer1">
+    <div class="farmer-card">
+        <div class="farmer-details">
+            <h3>Farmer Name: John Doe</h3>
+            <p><strong>Location:</strong> Maharashtra</p>
+            <p><strong>Crops Available:</strong> Wheat, Rice</p>
+            <p><strong>Price (per ton):</strong> ₹2000</p>
+            <div class="farmer-actions">
+                <button class="call-btn" onclick="startVideoCall('John Doe')">Video Call</button>
+                <button class="call-btn" onclick="startAudioCall('John Doe')">Audio Call</button>
+                <button class="chat-btn" onclick="openChat('John Doe')">Chat</button>
+            </div>
+        </div>
+        <button class="expand-btn" onclick="toggleDetails('farmer1')"><i class="fas fa-chevron-down"></i></button>
+    </div>
+    <div class="farmer-extra" id="farmer1-extra">
+        <p><strong>Contact:</strong> +91-9876543210</p>
+        <p><strong>Experience:</strong> 10 years</p>
+        <p><strong>Available Quantity:</strong> 50 tons</p>
+        <p><strong>Field Location:</strong> <a href="#" onclick="openMap()">View on Map</a></p>
+        <p><strong>Crop Monitoring:</strong> <a href="#" onclick="showCropMonitoring()">View Data</a></p>
+       
+        <p><strong>Market Price Trends:</strong> <a href="#" onclick="viewPriceTrends('Wheat')">View Trends</a></p>
+<div id="price-trend-modal" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal('price-trend-modal')">&times;</span>
+<canvas id="price-trend-chart"></canvas>
+<p><strong>Weather Impact:</strong> <a href="#" onclick="viewWeatherImpact('Wheat')">Check Impact</a></p>
+
+<p><strong>Soil Condition:</strong> <a href="#" onclick="viewSoilConditions('John Doe')">View Soil Data</a></p>
+<button class="ar-inspection-btn" onclick="startARInspection()">Start AR Crop Inspection</button>
+
+<button class="negotiation-btn" onclick="openChatbot()">Start Automated Negotiation</button>
+<button class="contract-btn" onclick="startContractProcess('John Doe')">Create Contract</button>
+
+<button class="contract-btn" onclick="generateSmartContract('John Doe')">Create Smart Contract</button>
+
+</div>
+</div>
+
+   
+    <!-- Other sections remain unchanged -->
+
+</div>
+
+<div class="farmer-extra" id="farmer1-extra">
+    <p><strong>Contact:</strong> +91-9876543210</p>
+    <p><strong>Experience:</strong> 10 years</p>
+    <p><strong>Available Quantity:</strong> 50 tons</p>
+    <p><strong>Field Location:</strong> <a href="#" onclick="openMap()">View on Map</a></p>
+    <p><strong>Field Condition:</strong> <a href="#" onclick="showFieldCondition('John Doe')">View Field Condition</a></p>
+    <p><strong>Market Price:</strong> ₹2200 per ton</p>
+    <p><strong>Weather Forecast:</strong> <span id="weather-forecast1">Fetching...</span></p>
+    <p><strong>Crop Monitoring:</strong> <a href="#" onclick="showCropMonitoring()">View Data</a></p>
+    <button class="contract-btn" onclick="startContractProcess('John Doe')">Create Contract</button>
+    <button class="schedule-btn" onclick="scheduleVisit('John Doe')">Schedule Field Visit</button>
+    <button class="negotiation-btn" onclick="startNegotiation('John Doe')">Start Negotiation</button>
+
+</div>
+</div>
+<div class="farmer" id="farmer1">
+    <div class="farmer-card">
+        <div class="farmer-details">
+            <h3>Farmer Name: John Doe</h3>
+            <p><strong>Location:</strong> Maharashtra</p>
+            <p><strong>Crops Available:</strong> Wheat, Rice</p>
+            <p><strong>Price (per ton):</strong> ₹2000</p>
+            <div class="farmer-actions">
+                <button class="call-btn" onclick="startVideoCall('John Doe')">Video Call</button>
+                <button class="call-btn" onclick="startAudioCall('John Doe')">Audio Call</button>
+                <button class="chat-btn" onclick="openChat('John Doe')">Chat</button>
+            </div>
+        </div>
+        <button class="expand-btn" onclick="toggleDetails('farmer1')"><i class="fas fa-chevron-down"></i></button>
+    </div>
+    <div class="farmer-extra" id="farmer1-extra">
+        <p><strong>Contact:</strong> +91-9876543210</p>
+        <p><strong>Experience:</strong> 10 years</p>
+        <p><strong>Available Quantity:</strong> 50 tons</p>
+        <p><strong>Field Location:</strong> <a href="#" onclick="openMap()">View on Map</a></p>
+        <p><strong>Crop Monitoring:</strong> <a href="#" onclick="showCropMonitoring()">View Data</a></p>
+       
+        <p><strong>Market Price Trends:</strong> <a href="#" onclick="viewPriceTrends('Wheat')">View Trends</a></p>
+<div id="price-trend-modal" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal('price-trend-modal')">&times;</span>
+<canvas id="price-trend-chart"></canvas>
+<p><strong>Weather Impact:</strong> <a href="#" onclick="viewWeatherImpact('Wheat')">Check Impact</a></p>
+<p><strong>Soil Condition:</strong> <a href="#" onclick="viewSoilConditions('John Doe')">View Soil Data</a></p>
+        <button class="ar-inspection-btn" onclick="startARInspection()">Start AR Crop Inspection</button>
+
+        <button class="negotiation-btn" onclick="openChatbot()">Start Automated Negotiation</button>
+        <button class="contract-btn" onclick="startContractProcess('John Doe')">Create Contract</button>
+
+        <button class="contract-btn" onclick="generateSmartContract('John Doe')">Create Smart Contract</button>
+
+    </div>
+</div>
+
+               
+                <!-- Other sections remain unchanged -->
+
+            </div>
+            
+            <div class="farmer-extra" id="farmer1-extra">
+                <p><strong>Contact:</strong> +91-9876543210</p>
+                <p><strong>Experience:</strong> 10 years</p>
+                <p><strong>Available Quantity:</strong> 50 tons</p>
+                <p><strong>Field Location:</strong> <a href="#" onclick="openMap()">View on Map</a></p>
+                <p><strong>Field Condition:</strong> <a href="#" onclick="showFieldCondition('John Doe')">View Field Condition</a></p>
+                <p><strong>Market Price:</strong> ₹2200 per ton</p>
+                <p><strong>Weather Forecast:</strong> <span id="weather-forecast1">Fetching...</span></p>
+                <p><strong>Crop Monitoring:</strong> <a href="#" onclick="showCropMonitoring()">View Data</a></p>
+                <button class="contract-btn" onclick="startContractProcess('John Doe')">Create Contract</button>
+                <button class="schedule-btn" onclick="scheduleVisit('John Doe')">Schedule Field Visit</button>
+                <button class="negotiation-btn" onclick="startNegotiation('John Doe')">Start Negotiation</button>
+            
+            </div>
+            </div>
+            <div class="farmer" id="farmer1">
+                <div class="farmer-card">
+                    <div class="farmer-details">
+                        <h3>Farmer Name: John Doe</h3>
+                        <p><strong>Location:</strong> Maharashtra</p>
+                        <p><strong>Crops Available:</strong> Wheat, Rice</p>
+                        <p><strong>Price (per ton):</strong> ₹2000</p>
+                        <div class="farmer-actions">
+                            <button class="call-btn" onclick="startVideoCall('John Doe')">Video Call</button>
+                            <button class="call-btn" onclick="startAudioCall('John Doe')">Audio Call</button>
+                            <button class="chat-btn" onclick="openChat('John Doe')">Chat</button>
+                        </div>
+                    </div>
+                    <button class="expand-btn" onclick="toggleDetails('farmer1')"><i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="farmer-extra" id="farmer1-extra">
+                    <p><strong>Contact:</strong> +91-9876543210</p>
+                    <p><strong>Experience:</strong> 10 years</p>
+                    <p><strong>Available Quantity:</strong> 50 tons</p>
+                    <p><strong>Field Location:</strong> <a href="#" onclick="openMap()">View on Map</a></p>
+                    <p><strong>Crop Monitoring:</strong> <a href="#" onclick="showCropMonitoring()">View Data</a></p>
+                   
+                    <p><strong>Market Price Trends:</strong> <a href="#" onclick="viewPriceTrends('Wheat')">View Trends</a></p>
+<div id="price-trend-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('price-trend-modal')">&times;</span>
+        <canvas id="price-trend-chart"></canvas>
+        <p><strong>Weather Impact:</strong> <a href="#" onclick="viewWeatherImpact('Wheat')">Check Impact</a></p>
+        
+        <p><strong>Soil Condition:</strong> <a href="#" onclick="viewSoilConditions('John Doe')">View Soil Data</a></p>
+        <button class="ar-inspection-btn" onclick="startARInspection()">Start AR Crop Inspection</button>
+
+        <button class="negotiation-btn" onclick="openChatbot()">Start Automated Negotiation</button>
+        <button class="contract-btn" onclick="startContractProcess('John Doe')">Create Contract</button>
+
+        <button class="contract-btn" onclick="generateSmartContract('John Doe')">Create Smart Contract</button>
+
+    </div>
+</div>
+
+               
+                <!-- Other sections remain unchanged -->
+
+            </div>
+            
+            <div class="farmer-extra" id="farmer1-extra">
+                <p><strong>Contact:</strong> +91-9876543210</p>
+                <p><strong>Experience:</strong> 10 years</p>
+                <p><strong>Available Quantity:</strong> 50 tons</p>
+                <p><strong>Field Location:</strong> <a href="#" onclick="openMap()">View on Map</a></p>
+                <p><strong>Field Condition:</strong> <a href="#" onclick="showFieldCondition('John Doe')">View Field Condition</a></p>
+                <p><strong>Market Price:</strong> ₹2200 per ton</p>
+                <p><strong>Weather Forecast:</strong> <span id="weather-forecast1">Fetching...</span></p>
+                <p><strong>Crop Monitoring:</strong> <a href="#" onclick="showCropMonitoring()">View Data</a></p>
+                <button class="contract-btn" onclick="startContractProcess('John Doe')">Create Contract</button>
+                <button class="schedule-btn" onclick="scheduleVisit('John Doe')">Schedule Field Visit</button>
+                <button class="negotiation-btn" onclick="startNegotiation('John Doe')">Start Negotiation</button>
+            
+            </div>
+            </div>
+            <div class="farmer" id="farmer1">
+                <div class="farmer-card">
+                    <div class="farmer-details">
+                        <h3>Farmer Name: John Doe</h3>
+                        <p><strong>Location:</strong> Maharashtra</p>
+                        <p><strong>Crops Available:</strong> Wheat, Rice</p>
+                        <p><strong>Price (per ton):</strong> ₹2000</p>
+                        <div class="farmer-actions">
+                            <button class="call-btn" onclick="startVideoCall('John Doe')">Video Call</button>
+                            <button class="call-btn" onclick="startAudioCall('John Doe')">Audio Call</button>
+                            <button class="chat-btn" onclick="openChat('John Doe')">Chat</button>
+                        </div>
+                    </div>
+                    <button class="expand-btn" onclick="toggleDetails('farmer1')"><i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="farmer-extra" id="farmer1-extra">
+                    <p><strong>Contact:</strong> +91-9876543210</p>
+                    <p><strong>Experience:</strong> 10 years</p>
+                    <p><strong>Available Quantity:</strong> 50 tons</p>
+                    <p><strong>Field Location:</strong> <a href="#" onclick="openMap()">View on Map</a></p>
+                    <p><strong>Crop Monitoring:</strong> <a href="#" onclick="showCropMonitoring()">View Data</a></p>
+                   
+                    <p><strong>Market Price Trends:</strong> <a href="#" onclick="viewPriceTrends('Wheat')">View Trends</a></p>
+<div id="price-trend-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('price-trend-modal')">&times;</span>
+        <canvas id="price-trend-chart"></canvas>
+        <p><strong>Weather Impact:</strong> <a href="#" onclick="viewWeatherImpact('Wheat')">Check Impact</a></p>
+        
+        <p><strong>Soil Condition:</strong> <a href="#" onclick="viewSoilConditions('John Doe')">View Soil Data</a></p>
+        <button class="ar-inspection-btn" onclick="startARInspection()">Start AR Crop Inspection</button>
+
+        <button class="negotiation-btn" onclick="openChatbot()">Start Automated Negotiation</button>
+        <button class="contract-btn" onclick="startContractProcess('John Doe')">Create Contract</button>
+
+        <button class="contract-btn" onclick="generateSmartContract('John Doe')">Create Smart Contract</button>
+
+    </div>
+</div>
+
+               
+                <!-- Other sections remain unchanged -->
+
+            </div>
+            
+            <div class="farmer-extra" id="farmer1-extra">
+                <p><strong>Contact:</strong> +91-9876543210</p>
+                <p><strong>Experience:</strong> 10 years</p>
+                <p><strong>Available Quantity:</strong> 50 tons</p>
+                <p><strong>Field Location:</strong> <a href="#" onclick="openMap()">View on Map</a></p>
+                <p><strong>Field Condition:</strong> <a href="#" onclick="showFieldCondition('John Doe')">View Field Condition</a></p>
+                <p><strong>Market Price:</strong> ₹2200 per ton</p>
+                <p><strong>Weather Forecast:</strong> <span id="weather-forecast1">Fetching...</span></p>
+                <p><strong>Crop Monitoring:</strong> <a href="#" onclick="showCropMonitoring()">View Data</a></p>
+                <button class="contract-btn" onclick="startContractProcess('John Doe')">Create Contract</button>
+                <button class="schedule-btn" onclick="scheduleVisit('John Doe')">Schedule Field Visit</button>
+                <button class="negotiation-btn" onclick="startNegotiation('John Doe')">Start Negotiation</button>
+            
+            </div>
+            </div>
+
+            
+
+        </section>
+
+        <!-- Loading Spinner -->
+        <div class="loading-spinner" id="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+        </div>
+
+        <!-- Real-Time Chat Modal -->
+        <div class="chat-modal" id="chat-modal">
+            <div class="chat-header">
+                <h3>Chat with <span id="chat-with"></span></h3>
+                <button class="close-chat" onclick="closeChat()">X</button>
+            </div>
+            <div class="chat-body">
+                <div class="chat-messages" id="chat-messages"></div>
+                <input type="text" id="chat-input" placeholder="Type a message" onkeydown="sendMessage(event)">
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Assured Contract Farming. All Rights Reserved.</p>
+    </footer>
+<script>
+    function toggleDetails(farmerId) {
+        const extraDetails = document.getElementById(farmerId + '-extra');
+        extraDetails.classList.toggle('show');
+    }
+    // Dark Mode Toggle
+document.getElementById('darkModeToggle').addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+});
+    function filterCrops() {
+        const input = document.getElementById('crop-search').value.toLowerCase();
+        const farmers = document.getElementsByClassName('farmer');
+        for (let i = 0; i < farmers.length; i++) {
+            const crops = farmers[i].getElementsByClassName('farmer-details')[0].getElementsByTagName('p')[1].textContent.toLowerCase();
+            if (crops.indexOf(input) > -1) {
+                farmers[i].style.display = "";
+                farmers[i].classList.add('highlight');
+            } else {
+                farmers[i].style.display = "none";
+                farmers[i].classList.remove('highlight');
+            }
+        }
+    }
+    
+    function startVideoCall(farmerName) {
+        alert('Starting video call with ' + farmerName);
+        // Logic to open video call
+    }
+    
+    function startAudioCall(farmerName) {
+        alert('Starting audio call with ' + farmerName);
+        // Logic to open audio call
+    }
+    
+    function openChat(farmerName) {
+        document.getElementById('chat-with').textContent = farmerName;
+        document.getElementById('chat-modal').style.display = 'block';
+    }
+    
+    function closeChat() {
+        document.getElementById('chat-modal').style.display = 'none';
+    }
+    
+    function sendMessage(event) {
+        if (event.key === 'Enter') {
+            const message = document.getElementById('chat-input').value;
+            if (message.trim()) {
+                const messageContainer = document.createElement('div');
+                messageContainer.classList.add('message');
+                messageContainer.textContent = message;
+                document.getElementById('chat-messages').appendChild(messageContainer);
+                document.getElementById('chat-input').value = '';
+            }
+        }
+    }
+    
+    function showCropMonitoring() {
+        alert('Displaying crop monitoring data...');
+        // Logic to show dynamic crop monitoring data (e.g., satellite images, weather conditions)
+    }
+    
+    function openMap() {
+        alert('Opening map with field location...');
+        // Logic to open interactive map
+    }
+    
+    function startContractProcess(farmerName) {
+        const spinner = document.getElementById('loading-spinner');
+        spinner.style.display = 'block';
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            alert('Contract process started with ' + farmerName);
+        }, 2000); // Simulates a contract process loading time
+    }
+    </script>
+    </body>
+    </html>

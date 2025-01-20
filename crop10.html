@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer's Dashboard</title>
+    <link rel="stylesheet" href="crop10.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- For chart display -->
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> <!-- Google Translate -->
+</head>
+<body>
+    <header>
+        <h1>Farmer's Dashboard</h1>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#contractors">Find Contractors</a></li>
+                <li><a href="#deals">My Deals</a></li>
+                <li><a href="#products">Add Products</a></li>
+                <li><a href="#messages">Messages</a></li>
+                <li><a href="#marketplace">Sell Products</a></li>
+            </ul>
+        </nav>
+
+        <!-- Language Translation Feature -->
+        <div id="google_translate_element" style="text-align: right;"></div>
+
+        <div class="theme-toggle">
+            <button id="darkModeToggle">Toggle Dark Mode</button>
+        </div>
+    </header>
+
+    <section id="dashboard">
+        <h2>Dashboard Overview</h2>
+        <div class="stats">
+            <div class="stat-item">
+                <h3>Active Contracts</h3>
+                <p id="activeContracts">3</p>
+                <progress value="60" max="100"></progress>
+            </div>
+            <div class="stat-item">
+                <h3>Pending Deals</h3>
+                <p id="pendingDeals">2</p>
+                <progress value="40" max="100"></progress>
+            </div>
+            <div class="stat-item">
+                <h3>New Messages</h3>
+                <p id="newMessages">5</p>
+                <progress value="80" max="100"></progress>
+            </div>
+        </div>
+
+        <div>
+            <h3>Sales Trend</h3>
+            <canvas id="salesChart" width="400" height="150"></canvas> <!-- Chart placeholder -->
+        </div>
+    </section>
+
+    <section id="contractors">
+        <h2>Find Contractors</h2>
+        <input type="text" id="searchContractors" placeholder="Search for contractors...">
+        <button onclick="searchContractors()">Search</button>
+        <ul id="contractorList"></ul>
+    </section>
+
+    <section id="deals">
+        <h2>My Deals</h2>
+        <div id="dealsList">
+            <p>No deals available.</p>
+        </div>
+    </section>
+
+    <section id="products">
+        <h2>Add Products/Crops</h2>
+        <form id="productForm" onsubmit="addProduct(event)">
+            <label for="cropName">Crop Name:</label>
+            <input type="text" id="cropName" required>
+            <label for="quantity">Quantity (in tons):</label>
+            <input type="number" id="quantity" required>
+            <label for="price">Expected Price (per ton):</label>
+            <input type="number" id="price" required>
+            <label for="cropImage">Upload Image:</label>
+            <input type="file" id="cropImage" accept="image/*">
+            <button type="submit">Add Crop</button>
+        </form>
+        <div id="productList"></div>
+    </section>
+
+    <section id="messages">
+        <h2>Messages</h2>
+        <div id="chat">
+            <p>No messages yet.</p>
+        </div>
+    </section>
+
+    <section id="marketplace">
+        <h2>Sell Your Products</h2>
+        <p>List your products for buyers to view.</p>
+        <button onclick="listProducts()">List Your Products</button>
+        <div id="marketplaceList"></div>
+    </section>
+
+    <script src="crop10.js"></script>
+    <script>
+        // Initialize Google Translate
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'hi,kn,te,ta,ml,gu,bn,pa,mr', // Add regional languages here
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+</body>
+</html>
